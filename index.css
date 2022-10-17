@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root{
+    --bgCol : "#76cbe4";
+    --textCol : "#320b2d";
+    --btnBg: "#c73b4a";
+    --btnCol: "#fcfefe";
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bgCol);
+    color: var(--textCol);
+    transition: all ease-out 5000ms;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+}
+
+ul.links{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 50%;
+}
+
+ul.links li a{
+    color: currentColor;
+    text-decoration: none;
+    opacity: .7;
+}
+
+ul.links li a:hover{
+    opacity: 1;
+}
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    min-height: 90vh;
+    padding: 0 20%;
+    text-align: center;
+}
+
+h1#quote{
+    font-size: 2rem;
+    font-weight: 700;
+    transition: all 300ms ease-in;
+}
+
+.credits{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+#name-char{
+    font-size: 1.5rem;
+}
+
+#name-anime{
+    font-size: 1.3rem;
+}
+
+#fscreen-exit{
+    display: none;
+}
+
+
+#quote::selection{
+    background-color: rgba(113, 100, 100, 0.253);;
+}
+
+
+#controllers button{
+    padding: .3rem .6rem;
+    font-size: 1.05rem;
+    border: none;
+    outline: none;
+    background-color: var(--btnBg);
+    color: var(--btnCol);
+    transition: all ease-in-out 400ms;
+    margin: 5%;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+#controllers button:hover{
+    transform: scale(1.1);
+}
+
+/* FULLSCREEN */
+
+:-webkit-full-screen {
+    background-color: yellow;
+  }
+  
+  /* IE11 */
+  :-ms-fullscreen {
+    background-color: yellow;
+  }
+  
+  /* Standard syntax */
+  :fullscreen {
+    background-color: yellow;
+  }
+
+  /* MODAL */
+
+  #modal-bg{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.586);
+    color: white;
+    font-weight: 700;
+    flex-direction: column;
+    gap: 5rem;
+    display: none;
+  }
+
+  .modal{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+  }
+
+  .modal-head{
+    text-align: center;
+    font-size: 2.4rem;
+    background-color: black;
+    padding: 1rem 2rem;
+  }
+
+  .modal div{
+    background-color: black;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    filter: blur(1px);
+    transition: all ease-in-out 300ms;
+  }
+  .modal div:hover{
+    filter: blur(0px);
+    background-color: #fff;
+    color: #000;
+  }
+
+  
+
+nav{
+    background-color: var(--bg-col);
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    justify-content: space-between;
+    color: var(--textCol);
+    padding: 0rem 3rem;
+}
+
+#nav-links{
+    background: linear-gradient(rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0.69));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style: none;
+    color: #fff;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    display: none;
+}
+
+#x{
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
+
+#lines{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .4rem;
+    cursor: pointer;
+}
+
+#nav-links li{
+    padding: 1rem;
+    width: 50%;
+    transition: all ease-in-out 500ms;
+    text-align: center;
+}
+
+#nav-links li:hover{
+    /* filter: grayscale(1); */
+    /* filter: contrast(70); */
+    background-color: var(--textCol);
+    color: var(--bgCol);
+}
+
+.line{
+    width: 30px;
+    border-bottom: var(--textCol) 1px solid;
+    height: 1px;
+}
+
+a{
+    color: currentColor;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .modal{
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
