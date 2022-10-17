@@ -189,7 +189,7 @@ document.getElementById('whatsapp').addEventListener('click', function(){
 });
 
 document.getElementById('download').addEventListener('click', function(){
-    window.open('/download.html', '_blank');
+    window.open('./download.html', '_blank');
 })
 
 // NAVBAR
