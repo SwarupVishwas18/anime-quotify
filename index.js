@@ -156,7 +156,8 @@ gen.addEventListener('click', function(){
     r.style.setProperty('--textCol', textCol);
     r.style.setProperty('--btnBg', btnBg);
     r.style.setProperty('--btnCol', btnCol);
-
+    var flag = true;
+    
     fetch('https://animechan.vercel.app/api/random')
     .then(response => response.json())
     .then( quote => {
