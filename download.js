@@ -21,6 +21,8 @@ var textCol = ["#320b2d","#231e20","#231e20","#231e20"]
 var shadowCol = ["#c73b4a","#181818","#1a0f0d","#b3b3b3"]
 var i = 0
 
+document.querySelector('.cpy').textContent = "Swarup's Quotify"
+
 function changeCol(){
     document.body.style.backgroundColor = bodyBack[i];
     card.style.backgroundColor = cardBack[i];
