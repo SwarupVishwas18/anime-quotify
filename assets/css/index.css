@@ -159,7 +159,7 @@ h1#quote{
     background-color: black;
     padding: 1rem 2rem;
     cursor: pointer;
-    filter: blur(1px);
+    /* filter: blur(1px); */
     transition: all ease-in-out 300ms;
   }
   .modal div:hover{
