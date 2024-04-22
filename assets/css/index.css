@@ -168,6 +168,14 @@ h1#quote{
     color: #000;
   }
 
+  #previous:disabled{
+    opacity: .5;
+  }
+
+  #previous:disabled:hover{
+    transform: scale(1);
+  }
+
   
 
 nav{

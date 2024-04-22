@@ -71,6 +71,10 @@ var nameCont = document.querySelector('#name-anime');
 var charCont = document.querySelector('#name-char');
 // Create a function for setting a variable value
 function myFunction_set() {
+
+    if (!localStorage.getItem("prevQuote")) {
+        document.querySelector("#previous").disabled = true;
+    }
     var currentCol = colors[parseInt(Math.random() * 8)];
     var bgCol = currentCol.bgCol;
     var textCol = currentCol.textCol;
@@ -84,7 +88,7 @@ function myFunction_set() {
     var label = getQuote();
     if (!label) {
 
-        fetch('https://animechan.vercel.app/api/random')
+        fetch('https://animechan.xyz/api/random')
             .then(response => response.json())
             .then(quote => {
                 console.log(quote);
