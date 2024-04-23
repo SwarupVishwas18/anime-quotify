@@ -162,10 +162,19 @@ gen.addEventListener('click', function () {
     r.style.setProperty('--btnCol', btnCol);
     var flag = true;
 
+    
+    let array = [];
+
     fetch('https://animechan.xyz/api/random')
         .then(response => response.json())
         .then(quote => {
             console.log(quote);
+
+            array.push(quote);
+            console.log("array");
+            console.log(array); 
+
+
             quoteCont.textContent = quote.quote;
             nameCont.textContent = quote.anime;
             charCont.textContent = quote.character;
