@@ -167,7 +167,8 @@ gen.addEventListener('click', function () {
         .then(quote => {
             console.log(quote);
 
-            array.push(quote);
+            let prev = {quote:quoteCont.textContent, anime: nameCont.textContent, character:charCont.textContent }
+            array.push(prev);
             console.log("array");
             console.log(array); 
 
@@ -180,7 +181,7 @@ gen.addEventListener('click', function () {
 
         });
 
-        if(array.length>1){
+        if(array.length>=0){
             previous.disabled = false;
            }
 });
@@ -255,7 +256,6 @@ previous.addEventListener('click', function (){
     var flag = true;
 
    let result = array.pop();
-   result = array.pop();
     quoteCont.textContent = result.quote;
     nameCont.textContent = result.anime;
     charCont.textContent = result.character;
