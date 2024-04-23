@@ -113,6 +113,7 @@ var gen = document.querySelector('#generate');
 var share = document.querySelector('#share');
 var fscreen = document.querySelector('#fscreen');
 var previous = document.querySelector('#previous');
+previous.disabled=true;
 
 fscreen.addEventListener('click', function () {
     if (elem.requestFullscreen) {
