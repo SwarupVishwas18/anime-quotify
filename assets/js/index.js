@@ -84,13 +84,14 @@ function myFunction_set() {
     var label = getQuote();
     if (!label) {
 
-        fetch('https://api.animechan.io/v1/quotes/random')
+        fetch('https://yurippe.vercel.app/api/quotes?random=1')
             .then(response => response.json())
             .then(quote => {
                 console.log(quote);
-                quoteCont.textContent = quote.data.content;
-                nameCont.textContent = quote.data.anime.name;
-                charCont.textContent = quote.data.character.name;
+
+                quoteCont.textContent = quote[0].quote;
+                nameCont.textContent = quote[0].show;
+                charCont.textContent = quote[0].character;
                 localStorage.setItem('quote', quoteCont.textContent);
                 localStorage.setItem('name', nameCont.textContent);
                 localStorage.setItem('char', charCont.textContent);
@@ -164,19 +165,14 @@ gen.addEventListener('click', function () {
 
 
 
-    fetch('https://api.animechan.io/v1/quotes/random')
+    fetch('https://yurippe.vercel.app/api/quotes?random=1')
         .then(response => response.json())
         .then(quote => {
             console.log(quote);
 
-            let prev = { quote: quoteCont.textContent, anime: nameCont.textContent, character: charCont.textContent }
-            array.push(prev);
-            console.log("array");
-            console.log(array);
-
-            quoteCont.textContent = quote.data.content;
-            nameCont.textContent = quote.data.anime.name;
-            charCont.textContent = quote.data.character.name;
+            quoteCont.textContent = quote[0].quote;
+            nameCont.textContent = quote[0].show;
+            charCont.textContent = quote[0].character;
             localStorage.setItem('quote', quoteCont.textContent);
             localStorage.setItem('name', nameCont.textContent);
             localStorage.setItem('char', charCont.textContent);
