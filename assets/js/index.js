@@ -88,13 +88,13 @@ function myFunction_set() {
     var label = getQuote();
     if (!label) {
 
-        fetch('https://animechan.xyz/api/random')
+        fetch('https://api.animechan.io/v1/quotes/random')
             .then(response => response.json())
             .then(quote => {
                 console.log(quote);
-                quoteCont.textContent = quote.quote;
-                nameCont.textContent = quote.anime;
-                charCont.textContent = quote.character;
+                quoteCont.textContent = quote.data.content;
+                nameCont.textContent = quote.data.anime.name;
+                charCont.textContent = quote.data.character.name;
                 localStorage.setItem('quote', quoteCont.textContent);
                 localStorage.setItem('name', nameCont.textContent);
                 localStorage.setItem('char', charCont.textContent);
@@ -162,13 +162,13 @@ gen.addEventListener('click', function () {
     r.style.setProperty('--btnCol', btnCol);
     var flag = true;
 
-    fetch('https://animechan.xyz/api/random')
+    fetch('https://api.animechan.io/v1/quotes/random')
         .then(response => response.json())
         .then(quote => {
             console.log(quote);
-            quoteCont.textContent = quote.quote;
-            nameCont.textContent = quote.anime;
-            charCont.textContent = quote.character;
+            quoteCont.textContent = quote.data.content;
+            nameCont.textContent = quote.data.anime.name;
+            charCont.textContent = quote.data.character.name;
             localStorage.setItem('quote', quoteCont.textContent);
             localStorage.setItem('name', nameCont.textContent);
             localStorage.setItem('char', charCont.textContent);
