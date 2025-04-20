@@ -71,10 +71,6 @@ var nameCont = document.querySelector('#name-anime');
 var charCont = document.querySelector('#name-char');
 // Create a function for setting a variable value
 function myFunction_set() {
-
-    if (!localStorage.getItem("prevQuote")) {
-        document.querySelector("#previous").disabled = true;
-    }
     var currentCol = colors[parseInt(Math.random() * 8)];
     var bgCol = currentCol.bgCol;
     var textCol = currentCol.textCol;
@@ -116,6 +112,9 @@ var exitFscreen = document.querySelector('#fscreen-exit');
 var gen = document.querySelector('#generate');
 var share = document.querySelector('#share');
 var fscreen = document.querySelector('#fscreen');
+var previous = document.querySelector('#previous');
+previous.disabled=true;
+
 fscreen.addEventListener('click', function () {
     if (elem.requestFullscreen) {
         myFunction_set()
@@ -149,6 +148,7 @@ document.querySelector('#clip').addEventListener('click', function () {
 
 /*  PART IV : GENERATE ON CLICK  */
 var gen = document.getElementById('generate');
+let array = [];
 
 gen.addEventListener('click', function () {
     var currentCol = colors[parseInt(Math.random() * 8)];
@@ -162,10 +162,21 @@ gen.addEventListener('click', function () {
     r.style.setProperty('--btnCol', btnCol);
     var flag = true;
 
+
+
     fetch('https://api.animechan.io/v1/quotes/random')
         .then(response => response.json())
         .then(quote => {
             console.log(quote);
+
+            let prev = {quote:quoteCont.textContent, anime: nameCont.textContent, character:charCont.textContent }
+            array.push(prev);
+            console.log("array");
+            console.log(array); 
+
+            quoteCont.textContent = quote.quote;
+            nameCont.textContent = quote.anime;
+            charCont.textContent = quote.character;
             quoteCont.textContent = quote.data.content;
             nameCont.textContent = quote.data.anime.name;
             charCont.textContent = quote.data.character.name;
@@ -174,6 +185,10 @@ gen.addEventListener('click', function () {
             localStorage.setItem('char', charCont.textContent);
 
         });
+
+        if(array.length>=0){
+            previous.disabled = false;
+           }
 });
 
 document.querySelector('#share').addEventListener('click', function () {
@@ -224,4 +239,33 @@ x.addEventListener('click', function () {
         x.style.display = 'none';
         lines.style.display = 'flex';
     }
+})
+
+
+
+previous.addEventListener('click', function (){
+    
+   if(array.length==1){
+    previous.disabled = true;
+   }
+
+    var currentCol = colors[parseInt(Math.random() * 8)];
+    var bgCol = currentCol.bgCol;
+    var textCol = currentCol.textCol;
+    var btnBg = currentCol.btnBg;
+    var btnCol = currentCol.btnCol;
+    r.style.setProperty('--bgCol', bgCol);
+    r.style.setProperty('--textCol', textCol);
+    r.style.setProperty('--btnBg', btnBg);
+    r.style.setProperty('--btnCol', btnCol);
+    var flag = true;
+
+   let result = array.pop();
+    quoteCont.textContent = result.quote;
+    nameCont.textContent = result.anime;
+    charCont.textContent = result.character;
+    localStorage.setItem('quote', quoteCont.textContent);
+    localStorage.setItem('name', nameCont.textContent);
+    localStorage.setItem('char', charCont.textContent);
+    
 })
