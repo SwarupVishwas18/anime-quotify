@@ -113,7 +113,7 @@ var gen = document.querySelector('#generate');
 var share = document.querySelector('#share');
 var fscreen = document.querySelector('#fscreen');
 var previous = document.querySelector('#previous');
-previous.disabled=true;
+previous.disabled = true;
 
 fscreen.addEventListener('click', function () {
     if (elem.requestFullscreen) {
@@ -169,14 +169,11 @@ gen.addEventListener('click', function () {
         .then(quote => {
             console.log(quote);
 
-            let prev = {quote:quoteCont.textContent, anime: nameCont.textContent, character:charCont.textContent }
+            let prev = { quote: quoteCont.textContent, anime: nameCont.textContent, character: charCont.textContent }
             array.push(prev);
             console.log("array");
-            console.log(array); 
+            console.log(array);
 
-            quoteCont.textContent = quote.quote;
-            nameCont.textContent = quote.anime;
-            charCont.textContent = quote.character;
             quoteCont.textContent = quote.data.content;
             nameCont.textContent = quote.data.anime.name;
             charCont.textContent = quote.data.character.name;
@@ -186,9 +183,9 @@ gen.addEventListener('click', function () {
 
         });
 
-        if(array.length>=0){
-            previous.disabled = false;
-           }
+    if (array.length >= 0) {
+        previous.disabled = false;
+    }
 });
 
 document.querySelector('#share').addEventListener('click', function () {
@@ -243,11 +240,11 @@ x.addEventListener('click', function () {
 
 
 
-previous.addEventListener('click', function (){
-    
-   if(array.length==1){
-    previous.disabled = true;
-   }
+previous.addEventListener('click', function () {
+
+    if (array.length == 1) {
+        previous.disabled = true;
+    }
 
     var currentCol = colors[parseInt(Math.random() * 8)];
     var bgCol = currentCol.bgCol;
@@ -260,12 +257,12 @@ previous.addEventListener('click', function (){
     r.style.setProperty('--btnCol', btnCol);
     var flag = true;
 
-   let result = array.pop();
+    let result = array.pop();
     quoteCont.textContent = result.quote;
     nameCont.textContent = result.anime;
     charCont.textContent = result.character;
     localStorage.setItem('quote', quoteCont.textContent);
     localStorage.setItem('name', nameCont.textContent);
     localStorage.setItem('char', charCont.textContent);
-    
+
 })
