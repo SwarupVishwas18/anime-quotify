@@ -115,6 +115,8 @@ var share = document.querySelector('#share');
 var fscreen = document.querySelector('#fscreen');
 var previous = document.querySelector('#previous');
 previous.disabled = true;
+let index = 0;
+
 
 fscreen.addEventListener('click', function () {
     if (elem.requestFullscreen) {
@@ -129,6 +131,7 @@ fscreen.addEventListener('click', function () {
     gen.style.display = 'none';
     share.style.display = 'none';
     exitFscreen.style.display = 'inline';
+    index++;
 
 });
 
@@ -169,7 +172,8 @@ gen.addEventListener('click', function () {
         .then(response => response.json())
         .then(quote => {
             console.log(quote);
-
+            array.push(quote[0]);
+            index = array.length;
             quoteCont.textContent = quote[0].quote;
             nameCont.textContent = quote[0].show;
             charCont.textContent = quote[0].character;
@@ -179,7 +183,7 @@ gen.addEventListener('click', function () {
 
         });
 
-    if (array.length >= 0) {
+    if (index > 0) {
         previous.disabled = false;
     }
 });
@@ -238,7 +242,7 @@ x.addEventListener('click', function () {
 
 previous.addEventListener('click', function () {
 
-    if (array.length == 1) {
+    if (index == 1) {
         previous.disabled = true;
     }
 
@@ -252,10 +256,12 @@ previous.addEventListener('click', function () {
     r.style.setProperty('--btnBg', btnBg);
     r.style.setProperty('--btnCol', btnCol);
     var flag = true;
+    index--;
+    console.log(index);
 
-    let result = array.pop();
+    let result = array[index];
     quoteCont.textContent = result.quote;
-    nameCont.textContent = result.anime;
+    nameCont.textContent = result.show;
     charCont.textContent = result.character;
     localStorage.setItem('quote', quoteCont.textContent);
     localStorage.setItem('name', nameCont.textContent);
